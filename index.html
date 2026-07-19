@@ -315,12 +315,40 @@
         .work-info h3 { font-size: 1.75rem; margin: 8px 0 8px; }
         .work-info p { font-size: 0.95rem; color: var(--ink-2); margin-bottom: 16px; }
 
-        /* Real screenshots inside the work cards (the hero mock above is untouched) */
+        /* Scrolling site previews in the work cards. The hero mock keeps its own style. */
         .work a.work-shot { display: block; }
-        .work .shot-body { padding: 0; display: block; overflow: hidden; }
-        .work .shot-img { display: block; width: 100%; aspect-ratio: 16 / 10; object-fit: cover; object-position: center top; transition: transform 0.35s ease; }
-        .work:hover .shot-img { transform: scale(1.03); }
-        .work .shot-bar .url { height: auto; flex: 0 1 auto; max-width: 70%; background: none; border-radius: 0; font-family: var(--mono); font-size: 0.62rem; font-weight: 500; letter-spacing: 0.02em; color: var(--ink-3); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+        .work .shot-body { padding: 0; display: block; position: relative; overflow: hidden; aspect-ratio: 4 / 3; container-type: size; }
+        .work .shot-img {
+            display: block;
+            width: 100%;
+            height: auto;
+            min-height: 100cqh;
+            object-fit: cover;
+            object-position: top;
+            transform: translateY(0);
+            transition: transform 0.9s ease;
+        }
+        .work:hover .shot-img,
+        .work:focus-within .shot-img {
+            transform: translateY(calc(-100% + 100cqh));
+            transition-duration: 7s;
+            transition-timing-function: ease-in-out;
+        }
+        .work .shot-bar .url {
+            height: auto;
+            flex: 0 1 auto;
+            max-width: 70%;
+            background: none;
+            border-radius: 0;
+            font-family: var(--mono);
+            font-size: 0.62rem;
+            font-weight: 500;
+            letter-spacing: 0.02em;
+            color: var(--ink-3);
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
 
         /* ===================== PROCESS ===================== */
         .process { background: var(--bg-2); }
@@ -428,6 +456,7 @@
             html { scroll-behavior: auto; }
             *, *::before, *::after { animation: none !important; transition: none !important; }
             .reveal { opacity: 1 !important; transform: none !important; }
+            .work:hover .shot-img, .work:focus-within .shot-img { transform: none; }
         }
     </style>
 </head>
@@ -585,7 +614,7 @@
                             <div class="shot shot-rs">
                                 <div class="shot-bar"><span></span><span></span><span></span><span class="url">ronaldostats.app</span></div>
                                 <div class="shot-body">
-                                    <img class="shot-img" src="images/work-ronaldostats.jpg" alt="The ronaldostats.app homepage showing Cristiano Ronaldo career statistics and goal charts" width="1280" height="800" loading="lazy" decoding="async">
+                                    <img class="shot-img" src="images/work-ronaldostats.jpg" alt="The ronaldostats.app homepage showing Cristiano Ronaldo career statistics and goal charts" loading="lazy" decoding="async">
                                 </div>
                             </div>
                         </a>
@@ -604,7 +633,7 @@
                             <div class="shot shot-ph">
                                 <div class="shot-bar"><span></span><span></span><span></span><span class="url">gabpuccini.github.io/pureheart</span></div>
                                 <div class="shot-body">
-                                    <img class="shot-img" src="images/work-pureheart.jpg" alt="The PureHeart charity homepage in warm cream and forest green with community hall and campaign cards" width="1280" height="800" loading="lazy" decoding="async">
+                                    <img class="shot-img" src="images/work-pureheart.jpg" alt="The PureHeart charity homepage in warm cream and forest green with community hall and campaign cards" loading="lazy" decoding="async">
                                 </div>
                             </div>
                         </a>
@@ -623,7 +652,7 @@
                             <div class="shot shot-ot">
                                 <div class="shot-bar"><span></span><span></span><span></span><span class="url">gabpuccini.github.io/ottimapasta</span></div>
                                 <div class="shot-body">
-                                    <img class="shot-img" src="images/work-ottima.jpg" alt="The Ottima Pasta homepage with a striped awning, a handmade pasta headline and a Book a table button" width="1280" height="800" loading="lazy" decoding="async">
+                                    <img class="shot-img" src="images/work-ottima.jpg" alt="The Ottima Pasta homepage with a striped awning, a handmade pasta headline and a Book a table button" loading="lazy" decoding="async">
                                 </div>
                             </div>
                         </a>
